@@ -1,0 +1,78 @@
+import { createContext, useEffect, useState } from "react"
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { app } from "../firebase/firebase.config";
+
+export const AuthContext = createContext()
+
+const auth = getAuth(app);
+
+export default function AuthContextProvider({ children }) {
+
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [balance, setBalance] = useState(0)
+    const [paid, setPaid] = useState(false)
+    console.log(user)
+
+    const googleProvider = new GoogleAuthProvider();
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+    const loginUser = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+    const updateProfileUser = (info) => {
+        return updateProfile(auth.currentUser, info)
+    }
+    const loginWithGoogle = () => {
+        return signInWithPopup(auth, googleProvider)
+    }
+    const resetPassword = (email) => {
+        return sendPasswordResetEmail(auth, email)
+    }
+
+    const logOutUser = () => {
+        return signOut(auth)
+    }
+
+    
+    useEffect(() => {
+        localStorage.setItem("item", JSON.stringify([]));
+
+        const unSubscriber = onAuthStateChanged(auth, (loggedUser) => {
+            setUser(loggedUser)
+            setLoading(false)
+            setBalance(10000)
+
+        })
+
+        return () => {
+            unSubscriber()
+        }
+    }, [])
+
+
+    const authData = {
+        user,
+        setUser,
+        loading,
+        loginUser,
+        balance,
+        setBalance,
+        paid,
+        setPaid,
+        createUser,
+        logOutUser,
+        updateProfileUser,
+        loginWithGoogle,
+        resetPassword,
+    }
+
+    return (
+        <>
+            <AuthContext value={authData}>
+                {children}
+            </AuthContext>
+        </>
+    )
+}

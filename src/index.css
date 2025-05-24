@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@plugin "daisyui"{
+  themes: light --default;
+ }
+
+
+ @plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #058538;
+  --color-secondary: #851205;
+  --color-accent: #85056b;
+}
+
+
+a.active{
+  padding: 4px 20px;
+  background-color: #4CAF50;
+  color: #ffffff;
+}
+
+
+.plus {
+  position: absolute;
+  color: #058538;
+  font-size: 24px;
+  font-weight: bold;
+  user-select: none;
+  pointer-events: none;
+  animation: fall 1s ease-out forwards;
+}
+
+@keyframes fall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100px) scale(0.5);
+  }
+}

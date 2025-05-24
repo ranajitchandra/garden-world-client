@@ -1,0 +1,199 @@
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContextProvider";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
+
+export default function Register() {
+    const { createUser, updateProfileUser, loginWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const [name, setName] = useState("");
+    const [photo, setPhoto] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState({});
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+
+    const validateField = (field, value) => {
+        const newErrors = { ...errors };
+
+        if (field === "email") {
+            if (!emailRegex.test(value)) {
+                newErrors.email = "Invalid email format";
+            } else {
+                delete newErrors.email;
+            }
+        }
+
+        if (field === "password") {
+            if (!passwordRegex.test(value)) {
+                newErrors.password =
+                    "Password must be at least 6 characters and include an uppercase and a lowercase letter.";
+            } else {
+                delete newErrors.password;
+            }
+        }
+
+        if (field === "name") {
+            if (value.trim() === "") {
+                newErrors.name = "Name is required";
+            } else {
+                delete newErrors.name;
+            }
+        }
+
+        if (field === "photo") {
+            if (value.trim() === "") {
+                newErrors.photo = "Photo URL is required";
+            } else {
+                delete newErrors.photo;
+            }
+        }
+
+        setErrors(newErrors);
+    };
+
+    const handleChange = (setter, field) => (e) => {
+        const value = e.target.value;
+        setter(value);
+        validateField(field, value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const newErrors = {};
+
+        if (name.trim() === "") {
+            newErrors.name = "Name is required";
+        }
+
+        if (photo.trim() === "") {
+            newErrors.photo = "Photo URL is required";
+        }
+
+        if (!emailRegex.test(email)) {
+            newErrors.email = "Invalid email format";
+        }
+
+        if (!passwordRegex.test(password)) {
+            newErrors.password =
+                "Password must be at least 6 characters and include an uppercase and a lowercase letter.";
+        }
+
+        setErrors(newErrors);
+
+        const userData = {
+            displayName: name,
+            photoURL: photo
+        };
+
+        if (Object.keys(newErrors).length === 0) {
+            createUser(email, password)
+                .then((result) => {
+                    updateProfileUser(userData)
+                        .then(() => {
+                            toast.success(`Welcome, ${result.user.displayName}`);
+                        });
+                    navigate("/");
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                    toast.info("You have created before");
+                });
+        }
+    };
+
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then((result) => {
+                toast.success(`Login Successful, ${result.user.displayName}`);
+                navigate(location.state || "/");
+            })
+            .catch(() => toast.error("Google Login Failed"));
+    };
+
+    return (
+        <div className="flex items-center justify-center min-h-screen">
+            <form
+                onSubmit={handleSubmit}
+                className="bg-white p-8 rounded-md shadow-2xl w-96"
+            >
+                <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+
+                <div className="mb-4">
+                    <label className="block mb-1 font-medium">Name</label>
+                    <input
+                        type="text"
+                        className={`w-full px-3 py-2 border border-primary rounded ${errors.name ? "border-red-500" : "border-gray-300"
+                            }`}
+                        value={name}
+                        onChange={handleChange(setName, "name")}
+                    />
+                    {errors.name && (
+                        <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                    )}
+                </div>
+
+                <div className="mb-4">
+                    <label className="block mb-1 font-medium">Photo URL</label>
+                    <input
+                        type="text"
+                        className={`w-full px-3 py-2 border border-primary rounded ${errors.photo ? "border-red-500" : "border-gray-300"
+                            }`}
+                        value={photo}
+                        onChange={handleChange(setPhoto, "photo")}
+                    />
+                    {errors.photo && (
+                        <p className="text-red-500 text-sm mt-1">{errors.photo}</p>
+                    )}
+                </div>
+
+                <div className="mb-4">
+                    <label className="block mb-1 font-medium">Email</label>
+                    <input
+                        type="text"
+                        className={`w-full px-3 py-2 border border-primary rounded ${errors.email ? "border-red-500" : "border-gray-300"
+                            }`}
+                        value={email}
+                        onChange={handleChange(setEmail, "email")}
+                    />
+                    {errors.email && (
+                        <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    )}
+                </div>
+
+                <div className="mb-4">
+                    <label className="block mb-1 font-medium">Password</label>
+                    <input
+                        type="password"
+                        className={`w-full px-3 py-2 border border-primary rounded ${errors.password ? "border-red-500" : "border-gray-300"
+                            }`}
+                        value={password}
+                        onChange={handleChange(setPassword, "password")}
+                    />
+                    {errors.password && (
+                        <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                    )}
+                </div>
+
+                <button
+                    type="submit"
+                    className="w-full bg-primary text-white py-2 rounded hover:bg-cyan-700 transition"
+                >
+                    Create
+                </button>
+                <button
+                    onClick={handleGoogleLogin}
+                    type="button"
+                    className="w-full flex cursor-pointer items-center justify-center mt-4 py-2 border border-primary rounded bg-white hover:bg-gray-100 transition"
+                >
+                    <FcGoogle className="mr-2" /> Login with Google
+                </button>
+            </form>
+        </div>
+    );
+}
