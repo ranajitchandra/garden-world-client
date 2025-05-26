@@ -3,6 +3,8 @@ import RootLayout from "../layouts/RootLayout";
 import Login from "../pages/Login";
 import RootAuth from "../layouts/RootAuth";
 import Register from "../pages/Register";
+import ShareGardenTip from "../components/ShareGardenTip";
+import Home from "../components/Home";
 export const router = createBrowserRouter(
     [
         {
@@ -11,11 +13,11 @@ export const router = createBrowserRouter(
             children: [
                 {
                     path: "/",
-                    element: <h1>Home</h1>
+                    element: <Home></Home>
                 },
                 {
-                    path: "/auth",
-                    element: <Login></Login>
+                    path: "/share_garden_tip",
+                    element: <ShareGardenTip></ShareGardenTip>
                 },
             ]
         },

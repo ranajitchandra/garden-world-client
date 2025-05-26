@@ -5,10 +5,8 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
-import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
-import WorkWith from "../components/WorkWith";
-import FourTrips from "../components/FourTrips";
+
 
 export default function RootLayout() {
 
@@ -27,9 +25,6 @@ export default function RootLayout() {
         return (
             <div className="max-w-7xl mx-auto bg-blue-50">
                 <Navbar></Navbar>
-                <Carousel></Carousel>
-                <WorkWith></WorkWith>
-                <FourTrips></FourTrips>
                 <Outlet></Outlet>
                 <Footer></Footer>
 

@@ -15,7 +15,8 @@ export default function Register() {
     const [errors, setErrors] = useState({});
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{8,}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{8,}$/;
+
 
     const validateField = (field, value) => {
         const newErrors = { ...errors };
@@ -31,7 +32,7 @@ export default function Register() {
         if (field === "password") {
             if (!passwordRegex.test(value)) {
                 newErrors.password =
-                    "Password must be at least 8 characters and include an uppercase and a lowercase letter.";
+                    "Password must be at least 8 characters and include an uppercase and a lowercase letter with a special character.";
             } else {
                 delete newErrors.password;
             }

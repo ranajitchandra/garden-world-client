@@ -1,7 +1,16 @@
-
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContextProvider";
+import { toast } from "react-toastify";
 
 
 function ShareGardenTip() {
+
+    const { user, loading, balance, logOutUser } = useContext(AuthContext)
+
+
+
+    console.log(user);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -15,20 +24,42 @@ function ShareGardenTip() {
             imageUrl: form.imageUrl.value,
             category: form.category.value,
             availability: form.availability.value,
-            userEmail: "example@email.com", // Replace with real user data
-            userName: "John Doe",           // Replace with real user data
+            userName: form.userName.value,
+            userEmail: form.userEmail.value,
         };
 
+        fetch('https://graden-world-server.vercel.app/gardenTips', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(tipData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    console.log('added successfully.')
+
+                    toast.success(`added successfully.`);
+
+                    //   form.reset()
+                    form.reset();
+                }
+            })
         console.log("Submitted Tip:", tipData);
-        form.reset();
     };
 
     return (
-        <div className="max-w-xl mx-auto p-6 bg-base-100 rounded-lg shadow">
-            <h2 className="text-2xl font-bold text-primary mb-4">
-                ➕ Share a Garden Tip
+        <div className="max-w-xl mx-auto p-6 bg-base-100 rounded-lg shadow my-10">
+            <h2 className="text-2xl font-bold text-primary mb-4 text-center">
+                Share a Garden Tip
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
+
+                <input type="text" name="userName" defaultValue={user && user.displayName} readOnly className="input input-bordered w-full bg-gray-100" />
+                <input type="text" name="userEmail" defaultValue={user && user.email} readOnly className="input input-bordered w-full bg-gray-100" />
+
+
                 <input type="text" name="title" placeholder="Title" className="input input-bordered w-full" required />
                 <input type="text" name="plantType" placeholder="Plant Type / Topic" className="input input-bordered w-full" required />
 
@@ -54,8 +85,6 @@ function ShareGardenTip() {
                     <option>Hidden</option>
                 </select>
 
-                <input type="text" value="example@email.com" readOnly className="input input-bordered w-full bg-gray-100" />
-                <input type="text" value="John Doe" readOnly className="input input-bordered w-full bg-gray-100" />
 
                 <button type="submit" className="btn btn-primary w-full">
                     Submit Tip
