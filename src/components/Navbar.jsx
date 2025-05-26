@@ -3,11 +3,13 @@ import { Link, NavLink, useNavigate } from "react-router"
 import logo from "../assets/logo.png"
 import PlusTrail from "./PlusTrail"
 import { toast } from "react-toastify"
+import { AuthContext } from "../context/AuthContextProvider"
+import { useContext } from "react"
 
 
 export default function Navbar() {
 
-    // const { user, loading, balance, logOutUser } = useContext(AuthContext)
+    const { user, loading, balance, logOutUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
     // if (loading) {
@@ -23,55 +25,64 @@ export default function Navbar() {
 
     return (
         <>
-
-
-
-            <div class="navbar bg-base-100 shadow-sm">
-                <div class="navbar-start">
-                    <div class="dropdown">
-                        <div class="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+            <div className="navbar bg-base-100 shadow-sm">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <div tabIndex={0} className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                             </svg>
                         </div>
-                        <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <li><a class="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Home</a></li>
-                            <li><a class="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Bills</a></li>
-                            <li><a class="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Profile</a></li>
-                            <li><a class="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Contact</a></li>
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+                            <li><a className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Home</a></li>
+                            <li><a className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Bills</a></li>
+                            <li><a className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Profile</a></li>
+                            <li><a className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Contact</a></li>
                         </ul>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <img class="hidden lg:block w-12" src={logo} alt="" />
-                        <span class="text-xl lg:text-3xl font-bold text-primary">Garden World</span>
+                    <div className="flex items-center gap-3">
+                        <img className="hidden lg:block w-12" src={logo} alt="Logo" />
+                        <span className="text-xl lg:text-3xl font-bold text-primary">Garden World</span>
                     </div>
                 </div>
 
-                <div class="navbar-center hidden lg:flex">
-                    <ul class="menu menu-horizontal gap-4 px-1">
-                        <li><a class="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Home</a></li>
-                        <li><a class="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Bills</a></li>
-                        <li><a class="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Profile</a></li>
-                        <li><a class="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Contact</a></li>
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal gap-4 px-1">
+                        <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Home</NavLink></li>
+                        <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Explore Gardeners</NavLink></li>
+                        <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Browse Tips</NavLink></li>
+                        <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Share a Garden Tip</NavLink></li>
+                        <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">My Tips</NavLink></li>
                     </ul>
                 </div>
 
-                <div class="navbar-end">
-                    <div class="flex gap-2">
-                        <input type="text" placeholder="Search" class="none input input-bordered w-24 md:w-auto" />
-                        <div class="dropdown dropdown-end">
-                            <div class="btn btn-ghost btn-circle avatar">
-                                <div class="w-10 rounded-full">
-                                    <img src="https://via.placeholder.com/150" alt="User" />
+                <div className="navbar-end">
+                    <div className="navbar-center hidden lg:flex">
+                        <ul className="menu menu-horizontal gap-4 px-1">
+                            <li><NavLink to="/auth/login" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Sign</NavLink></li>
+                            <li><NavLink to="/auth/register" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Signup</NavLink></li>
+                        </ul>
+                    </div>
+
+                    <div className="flex gap-2">
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" alt="User" />
                                 </div>
                             </div>
-                            <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-4 w-60 p-4 shadow">
-                                <li class="border-b border-gray-200"><a>Name: <span class="font-bold">User Name</span></a></li>
-                                <li class="border-b border-gray-200"><a>Email: <span class="font-bold">user@example.com</span></a></li>
-                                <li class="border-b border-gray-200 flex">
-                                    <a>Balance: <span class="font-bold flex gap-1 items-center">1000 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"><path d="M0 0h24v24H0z" fill="none" /><path d="M12 3v18m0 0h-6m6 0h6" /></svg></span></a>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-4 w-60 p-4 shadow">
+                                <li className="border-b border-gray-200"><a>Name: <span className="font-bold">User Name</span></a></li>
+                                <li className="border-b border-gray-200"><a>Email: <span className="font-bold">user@example.com</span></a></li>
+                                <li className="border-b border-gray-200">
+                                    <a className="flex items-center gap-1">Balance: <span className="font-bold">1000</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M0 0h24v24H0z" fill="none" />
+                                            <path d="M12 3v18m0 0h-6m6 0h6" />
+                                        </svg>
+                                    </a>
                                 </li>
-                                <li><a>Logout</a></li>
+                                <li><button onClick={()=>handleLogOut()}>Logout</button></li>
                             </ul>
                         </div>
                     </div>
@@ -81,34 +92,35 @@ export default function Navbar() {
 
 
 
+
             <PlusTrail></PlusTrail>
-            {/* <div className="flex justify-between items-center navbar bg-base-100 shadow-sm py-3 px-10">
-                <div className="flex items-center gap-3">
-                    <img className="bg-black rounded-xl w-12" src={logo} alt="" />
-                    <span className="text-3xl font-bold text-primary">Transa Pay</span>
+            {/* <div classNameName="flex justify-between items-center navbar bg-base-100 shadow-sm py-3 px-10">
+                <div classNameName="flex items-center gap-3">
+                    <img classNameName="bg-black rounded-xl w-12" src={logo} alt="" />
+                    <span classNameName="text-3xl font-bold text-primary">Transa Pay</span>
                 </div>
-                <ul className="flex items-center gap-4 text-accent font-semibold">
+                <ul classNameName="flex items-center gap-4 text-accent font-semibold">
                     <li>
-                        <NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Home</NavLink>
+                        <NavLink to="/" classNameName="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/bills" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Bills</NavLink>
+                        <NavLink to="/bills" classNameName="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Bills</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/auth/profile" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Profile</NavLink>
+                        <NavLink to="/auth/profile" classNameName="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Profile</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/auth/contact" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Contact</NavLink>
+                        <NavLink to="/auth/contact" classNameName="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Contact</NavLink>
                     </li>
                 </ul>
-                <div className="flex gap-2">
+                <div classNameName="flex gap-2">
                     {
                         user ?
                             <>
-                                <input type="text" placeholder="Search" className="none input input-bordered w-24 md:w-auto" />
-                                <div className="dropdown dropdown-end">
-                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-10 rounded-full">
+                                <input type="text" placeholder="Search" classNameName="none input input-bordered w-24 md:w-auto" />
+                                <div classNameName="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button" classNameName="btn btn-ghost btn-circle avatar">
+                                        <div classNameName="w-10 rounded-full">
                                             <img
                                                 alt="Tailwind CSS Navbar component"
                                                 src={user.photoURL} />
@@ -116,12 +128,12 @@ export default function Navbar() {
                                     </div>
                                     <ul
                                         tabIndex={0}
-                                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-4 w-60 p-4 shadow">
-                                        <li className="border-b border-gray-200"><a>Name: <span className="font-bold"> {user.displayName} </span></a></li>
-                                        <li className="border-b border-gray-200"><a>Name: <span className="font-bold"> {user.email} </span></a></li>
-                                        <li className="border-b border-gray-200 flex">
+                                        classNameName="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-4 w-60 p-4 shadow">
+                                        <li classNameName="border-b border-gray-200"><a>Name: <span classNameName="font-bold"> {user.displayName} </span></a></li>
+                                        <li classNameName="border-b border-gray-200"><a>Name: <span classNameName="font-bold"> {user.email} </span></a></li>
+                                        <li classNameName="border-b border-gray-200 flex">
                                             <a>
-                                                Balance: <span className="font-bold flex gap-1 items-center"> {balance} <TbCurrencyTaka size={15} /></span>
+                                                Balance: <span classNameName="font-bold flex gap-1 items-center"> {balance} <TbCurrencyTaka size={15} /></span>
 
                                             </a>
                                         </li>
@@ -130,12 +142,12 @@ export default function Navbar() {
                                 </div>
                             </>
                             :
-                            <ul className="flex items-center gap-2">
+                            <ul classNameName="flex items-center gap-2">
                                 <li>
-                                    <Link to="/auth/login" className="text-accent font-bold hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Login</Link>
+                                    <Link to="/auth/login" classNameName="text-accent font-bold hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Login</Link>
                                 </li>
                                 <li>
-                                    <Link to="/auth/register" className="text-accent font-bold hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Register</Link>
+                                    <Link to="/auth/register" classNameName="text-accent font-bold hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Register</Link>
                                 </li>
                             </ul>
                     }

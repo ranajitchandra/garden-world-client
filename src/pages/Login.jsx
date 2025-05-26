@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { AuthContext } from "../context/AuthContextProvider";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../context/AuthContextProvider";
 
 export default function Login() {
     const { loginUser, loginWithGoogle, resetPassword } = useContext(AuthContext);
@@ -14,7 +14,7 @@ export default function Login() {
     const [errors, setErrors] = useState({});
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{8,}$/;
 
     const validateField = (field, value) => {
         const newErrors = { ...errors };
@@ -30,7 +30,7 @@ export default function Login() {
         if (field === "password") {
             if (!passwordRegex.test(value)) {
                 newErrors.password =
-                    "Password must be at least 6 characters and include an uppercase and a lowercase letter.";
+                    "Password must be at least 8 characters and include an uppercase and a lowercase letter.";
             } else {
                 delete newErrors.password;
             }
@@ -134,7 +134,7 @@ export default function Login() {
                         type="submit"
                         className="w-full bg-primary text-white py-2 rounded hover:bg-cyan-700 transition"
                     >
-                        Login
+                        Signin
                     </button>
                     <button
                         onClick={handleGoogleLogin}

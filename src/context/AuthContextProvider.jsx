@@ -10,8 +10,6 @@ export default function AuthContextProvider({ children }) {
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    const [balance, setBalance] = useState(0)
-    const [paid, setPaid] = useState(false)
     console.log(user)
 
     const googleProvider = new GoogleAuthProvider();
@@ -42,7 +40,6 @@ export default function AuthContextProvider({ children }) {
         const unSubscriber = onAuthStateChanged(auth, (loggedUser) => {
             setUser(loggedUser)
             setLoading(false)
-            setBalance(10000)
 
         })
 
@@ -57,10 +54,6 @@ export default function AuthContextProvider({ children }) {
         setUser,
         loading,
         loginUser,
-        balance,
-        setBalance,
-        paid,
-        setPaid,
         createUser,
         logOutUser,
         updateProfileUser,
