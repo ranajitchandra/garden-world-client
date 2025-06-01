@@ -5,6 +5,7 @@ import PlusTrail from "./PlusTrail"
 import { toast } from "react-toastify"
 import { AuthContext } from "../context/AuthContextProvider"
 import { useContext } from "react"
+import Loading from "./Loading"
 
 
 export default function Navbar() {
@@ -12,9 +13,9 @@ export default function Navbar() {
     const { user, loading, balance, logOutUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    // if (loading) {
-    //     return <Loading></Loading>
-    // }
+    if (loading) {
+        return <Loading></Loading>
+    }
     function handleLogOut() {
         logOutUser()
             .then(() => {
@@ -49,10 +50,10 @@ export default function Navbar() {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal gap-4 px-1">
                         <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Home</NavLink></li>
-                        <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Explore Gardeners</NavLink></li>
-                        <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Browse Tips</NavLink></li>
+                        <li><NavLink to="/explore_gardeners" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Explore Gardeners</NavLink></li>
+                        <li><NavLink to="/tips" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Browse Tips</NavLink></li>
                         <li><NavLink to="/share_garden_tip" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Share a Garden Tip</NavLink></li>
-                        <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">My Tips</NavLink></li>
+                        <li><NavLink to="/my_tips" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">My Tips</NavLink></li>
                     </ul>
                 </div>
 
@@ -60,26 +61,40 @@ export default function Navbar() {
                     {user ?
                         <div className="flex gap-2">
                             <div className="dropdown dropdown-end">
-                                <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div
+                                    tabIndex={0}
+                                    className="btn btn-ghost btn-circle avatar tooltip tooltip-left"
+                                    data-tip={user.displayName}
+                                >
                                     <div className="w-10 rounded-full">
-                                        <img src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" alt="User" />
+                                        <img
+                                            src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg"
+                                            alt="User"
+                                        />
                                     </div>
                                 </div>
-                                <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-4 w-60 p-4 shadow">
-                                    <li className="border-b border-gray-200"><a>Name: <span className="font-bold">User Name</span></a></li>
-                                    <li className="border-b border-gray-200"><a>Email: <span className="font-bold">user@example.com</span></a></li>
+
+                                <ul
+                                    tabIndex={0}
+                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-4 w-60 p-4 shadow"
+                                >
                                     <li className="border-b border-gray-200">
-                                        <a className="flex items-center gap-1">Balance: <span className="font-bold">1000</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M12 3v18m0 0h-6m6 0h6" />
-                                            </svg>
+                                        <a>
+                                            Name: <span className="font-bold">{user.displayName}</span>
                                         </a>
                                     </li>
-                                    <li><button onClick={() => handleLogOut()}>Logout</button></li>
+                                    <li className="border-b border-gray-200">
+                                        <a>
+                                            Email: <span className="font-bold">{user.email}</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <button onClick={() => handleLogOut()}>Logout</button>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
+
                         :
                         <div className="navbar-center hidden lg:flex">
                             <ul className="menu menu-horizontal gap-4 px-1">

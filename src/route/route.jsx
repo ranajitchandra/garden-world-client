@@ -5,6 +5,14 @@ import RootAuth from "../layouts/RootAuth";
 import Register from "../pages/Register";
 import ShareGardenTip from "../components/ShareGardenTip";
 import Home from "../components/Home";
+import BrowseTips from "../components/BrowseTips";
+import BrowseTipsDetails from "../pages/BrowseTipsDetails";
+import MyTips from "../components/MyTips";
+import RootTips from "../layouts/RootTips";
+import RootMyTips from "../layouts/RootMyTips";
+import UpdateTip from "../components/UpdateTip";
+import ErrorPage from "../components/ErrorPage";
+import ExploreGardeners from "../pages/ExploreGardeners";
 export const router = createBrowserRouter(
     [
         {
@@ -19,6 +27,44 @@ export const router = createBrowserRouter(
                     path: "/share_garden_tip",
                     element: <ShareGardenTip></ShareGardenTip>
                 },
+                {
+                    path: "/explore_gardeners",
+                    loader: () => fetch("https://graden-world-server.vercel.app/exploreGardeners"),
+                    element: <ExploreGardeners></ExploreGardeners>
+                },
+
+            ]
+        },
+        {
+            path: "/my_tips",
+            element: <RootMyTips></RootMyTips>,
+            children: [
+                {
+                    path: "/my_tips",
+                    loader: ()=> fetch("https://graden-world-server.vercel.app/gardenTips"),
+                    element: <MyTips></MyTips>
+                },
+                {
+                    path: '/my_tips/update/:id',
+                    loader: ({ params }) => fetch(`https://graden-world-server.vercel.app/gardenTips/${params.id}`),
+                    element: <UpdateTip></UpdateTip>
+                },
+            ]
+        },
+        {
+            path: "/tips",
+            element: <RootTips></RootTips>,
+            children: [
+                {
+                    path: "/tips",
+                    element: <BrowseTips></BrowseTips>,
+                },
+                {
+                    path: "/tips/browse_tips_details/:id",
+                    loader: ({ params }) => fetch(`https://graden-world-server.vercel.app/gardenTips/${params.id}`),
+                    element: <BrowseTipsDetails></BrowseTipsDetails>
+                },
+
             ]
         },
         {
@@ -41,7 +87,9 @@ export const router = createBrowserRouter(
         },
         {
             path: "*",
-            element: <h1>ee</h1>
+            element: <ErrorPage></ErrorPage>
         }
     ]
 )
+
+
