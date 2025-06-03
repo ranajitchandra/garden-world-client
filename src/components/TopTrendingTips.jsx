@@ -32,7 +32,7 @@ const TopTrendingTips = () => {
                             <h3 className="text-2xl font-bold text-secondary truncate">
                                 {tip.title}
                             </h3>
-                            <p className="text-sm text-accent line-clamp-2">{tip.description}</p>
+                            <p className="text-sm text-accent line-clamp-2 my-1">{tip.description}</p>
                             <div className="flex flex-wrap gap-2 mt-3 text-xs text-accent">
                                 <span className="flex items-center gap-1 bg-base-200 px-2 py-1 rounded-full">
                                     <FaTachometerAlt className="text-yellow-500" /> {tip.difficulty}
@@ -41,7 +41,10 @@ const TopTrendingTips = () => {
                                     <FaTag className="text-blue-500" /> {tip.category}
                                 </span>
                             </div>
-                            <div className="mt-3 text-right">
+                            <div className="mt-3 flex justify-between">
+                                <span className="inline-flex items-center gap-1 font-medium text-sm">
+                                    Posted by: <p className="text-error">{tip.userName}</p>
+                                </span>
                                 <span className="inline-flex items-center gap-1 text-error font-medium text-sm">
                                     Liked: {tip.totalLike}
                                 </span>
