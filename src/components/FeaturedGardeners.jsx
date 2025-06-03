@@ -13,13 +13,13 @@ const FeaturedGardeners = () => {
     }, []);
 
     return (
-        <section className="px-4 py-8 max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-6">🌿 Featured Gardeners</h2>
+        <section className="px-4 py-15 max-w-7xl mx-auto">
+            <h2 className="text-3xl font-bold text-center my-10">Featured Gardeners</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {gardeners.map((gardener, index) => (
                     <div
                         key={index}
-                        className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300"
+                        className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 hover:scale-102"
                     >
                         <img
                             src={gardener.image}

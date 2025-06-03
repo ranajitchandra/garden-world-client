@@ -6,6 +6,7 @@ const images = [
 
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Typewriter } from 'react-simple-typewriter'
 
 const slides = [
     {
@@ -52,8 +53,19 @@ export default function Carousel() {
             </div>
 
             <div className="absolute left-15 top-1/2 transform -translate-y-1/2 text-white drop-shadow-2xl p-4 rounded-xl max-w-sm">
-                <h2 className="text-2xl font-bold mb-2 text-shadow-lg">{slides[current].title}</h2>
-                <p className="text-sm text-shadow-lg">{slides[current].description}</p>
+                <h2 className="text-3xl font-bold mb-2 text-shadow-lg drop-shadow-[0_0_5px_black]">
+                    {/* {slides[current].title} */}
+                    <Typewriter
+                        words={[slides[current].title]} 
+                        loop={0}
+                        cursor
+                        cursorStyle='_'
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                    />
+                </h2>
+                <p className="text-sm text-shadow-lg drop-shadow-[0_0_1m.px_black]">{slides[current].description}</p>
             </div>
 
             <button

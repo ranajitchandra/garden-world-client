@@ -1,14 +1,34 @@
 import { useLoaderData } from "react-router";
 import Loading from "../components/Loading";
+import { AiFillLike } from "react-icons/ai";
+import { useState } from "react";
 
 export default function BrowseTipsDetails() {
     const tip = useLoaderData();
+
+    const [likeCount, setLikeCount] = useState(tip?.totalLike || 0);
+
+    function handleLikeTip(id) {
+        fetch(`https://graden-world-server.vercel.app/gardenTips/like/${id}`, {
+            method: 'POST'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    
+                    setLikeCount(prev => prev + 1);
+                } else {
+                    console.error("Like failed:", data.message);
+                }
+            })
+    }
 
     if (!tip) return <Loading />;
 
     return (
         <>
-            
+
             <h2 className="text-center text-4xl text-primary font-semibold my-10">Details</h2>
             <div className="max-w-sm mx-auto my-10 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow dark:bg-gray-800 dark:border-gray-700">
                 <img
@@ -37,10 +57,13 @@ export default function BrowseTipsDetails() {
                     </div>
 
                     <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                        <div className="flex items-center gap-2">
+                            <button onClick={() => handleLikeTip(tip._id)} className="px-2 py-1 bg-gray-600 text-white text-xs font-medium rounded-md hover:scale-110 hover:bg-gray-700 transition">
+                                <AiFillLike size={20} />
+                            </button>
+                            <p className="text-lg font-semibold">{likeCount}</p>
+                        </div>
                         <span>Posted By  {tip.userName}</span>
-                        <button className="px-3 py-1 bg-green-600 text-white text-xs font-medium rounded-full hover:bg-green-700 transition">
-                            Like
-                        </button>
                     </div>
                 </div>
             </div>

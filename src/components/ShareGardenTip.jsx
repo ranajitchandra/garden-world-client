@@ -26,6 +26,7 @@ function ShareGardenTip() {
             availability: form.availability.value,
             userName: form.userName.value,
             userEmail: form.userEmail.value,
+            totalLike: 0,
         };
 
         fetch('https://graden-world-server.vercel.app/gardenTips', {
