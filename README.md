@@ -1,12 +1,34 @@
-# React + Vite
+# 🌿 Graden World Clint
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Graden World Clint is a modern web application built with **React**, **Vite**, and **Tailwind CSS**. It features elegant UI components, animations, Firebase integration, and various popular libraries for smooth UX/UI development.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19**
+- **Vite 6**
+- **Tailwind CSS 4**
+- **DaisyUI**
+- **Firebase**
+- **React Router v7**
+- **Lottie Animations**
+- **React Icons**
+- **React Toastify**
+- **AOS (Animate On Scroll)**
+- **SweetAlert2**
 
-## Expanding the ESLint configuration
+## 📦 Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+ Live Demo: https://garden-world-react.web.app/
+
+```bash
+# Clone the repository clint
+git clone https://github.com/Programming-Hero-Web-Course4/b11a10-client-side-ranajitchandra
+
+# Clone the repository server
+git clone https://github.com/Programming-Hero-Web-Course4/b11a10-server-side-ranajitchandra
+
+# Navigate to the project folder
+cd graden_world_clint
+
+# Install dependencies
+npm install
