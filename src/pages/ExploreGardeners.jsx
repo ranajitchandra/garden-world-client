@@ -14,7 +14,7 @@ const ExploreGardeners = () => {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {gardeners.map((gardener, index) => (
-                    <div
+                    <div data-aos="fade-up"
                         key={index}
                         className="bg-base-100 rounded-2xl shadow-md overflow-hidden border border-transparent dark:border-gray-300 hover:shadow-xl transition-shadow"
                     >

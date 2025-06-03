@@ -61,7 +61,7 @@ export default function BrowseTips() {
                 <tbody>
                     {tips.filter((tip) => difficulty === "All" ? true : tip.difficulty === difficulty)
                         .map((tip) => (
-                            <tr
+                            <tr data-aos="fade-right"
                                 key={tip._id}
                                 className="grid grid-cols-5 items-center hover:bg-primary/5 border-b border-b-gray-300 transition duration-200"
                             >

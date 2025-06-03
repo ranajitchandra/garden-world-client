@@ -12,7 +12,7 @@ export default function BrowseTipsDetails() {
     if (tip.error) {
         return (
             <>
-                
+
 
                 <div className="h-screen flex flex-col items-center justify-center bg-white px-4 text-center">
                     <h1 className="text-6xl font-extrabold text-red-600 mb-4">404</h1>
@@ -22,7 +22,7 @@ export default function BrowseTipsDetails() {
                     <p className="text-gray-600 mb-6">Please check the URL or go back to the homepage.</p>
                     <Link
                         to="/"
-                        
+
                         className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
                     >
                         Go Home
@@ -55,8 +55,7 @@ export default function BrowseTipsDetails() {
 
     return (
         <>
-
-            <h2 className="text-center text-4xl text-primary font-semibold my-10">Details</h2>
+            <h2  className="text-center text-4xl text-primary font-semibold my-10">Details</h2>
             <div className="max-w-sm mx-auto my-10 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow  dark:bg-gray-800 dark:border-gray-700">
                 <img
                     className="w-full h-52 object-cover"

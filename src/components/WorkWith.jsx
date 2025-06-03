@@ -36,7 +36,7 @@ export default function WorkWith() {
   </h2>
   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
     {categories.map((category, index) => (
-      <div
+      <div data-aos="zoom-in"
         key={index}
         className="flex flex-col items-center text-center bg-white p-6 border border-transparent dark:border-gray-300 hover:border-gray-400 transition-colors cursor-pointer rounded-xl"
       >

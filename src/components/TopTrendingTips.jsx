@@ -17,7 +17,7 @@ const TopTrendingTips = () => {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {topTips.map((tip, index) => (
-                    <div
+                    <div data-aos="fade-up"
                         key={index}
                         className="bg-base-100 rounded-xl shadow-md border border-transparent dark:border-gray-300 hover:shadow-lg transition-all duration-300 transform hover:scale-105 overflow-hidden"
                     >
