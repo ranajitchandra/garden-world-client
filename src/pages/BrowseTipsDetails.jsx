@@ -55,8 +55,8 @@ export default function BrowseTipsDetails() {
 
     return (
         <>
-            <h2  className="text-center text-4xl text-primary font-semibold my-10">Details</h2>
-            <div className="max-w-sm mx-auto my-10 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow  dark:bg-gray-800 dark:border-gray-700">
+            <h2 className="text-center text-4xl text-primary font-semibold my-10">Details</h2>
+            <div data-aos="zoom-in" className="max-w-sm mx-auto my-10 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow  dark:bg-gray-800 dark:border-gray-700">
                 <img
                     className="w-full h-52 object-cover"
                     src={tip.imageUrl}

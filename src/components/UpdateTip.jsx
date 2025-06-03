@@ -45,7 +45,7 @@ function UpdateTip() {
             <h2 className="text-2xl font-bold text-primary mb-4 text-center">
                 Update Tip
             </h2>
-            <form onSubmit={handleUpdateTip} className="space-y-4">
+            <form data-aos="fade-up" onSubmit={handleUpdateTip} className="space-y-4">
 
                 <div>
                     <label className="label my-2 font-medium">Name</label>

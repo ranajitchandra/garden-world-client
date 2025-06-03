@@ -95,8 +95,8 @@ export default function MyTips() {
                     </thead>
                     <tbody>
                         {tips.map((tip) => (
-                            <>
-                                <tr
+                            
+                                <tr data-aos="fade-right"
                                     key={tip._id}
                                     className="hover:bg-primary/5 border-b border-b-gray-300 transition duration-200"
                                 >
@@ -129,7 +129,7 @@ export default function MyTips() {
                                         </button>
                                     </td>
                                 </tr>
-                            </>
+                            
 
                         ))}
                     </tbody>
