@@ -10,7 +10,7 @@ import Loading from "./Loading"
 
 export default function Navbar() {
 
-    const { user, loading, balance, logOutUser } = useContext(AuthContext)
+    const { user, loading, theTheme, setTheTheme, logOutUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
     if (loading) {
@@ -26,7 +26,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="navbar bg-base-100 shadow-sm">
+            <div className="navbar bg-base-100 shadow-md border-b border-b-gray-300">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -58,6 +58,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="navbar-end">
+                    <input onClick={()=> setTheTheme(!theTheme)} type="checkbox" defaultChecked className="toggle toggle-sm mr-5" />
                     {user ?
                         <div className="flex gap-2">
                             <div className="dropdown dropdown-end">

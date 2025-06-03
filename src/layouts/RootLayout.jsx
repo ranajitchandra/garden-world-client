@@ -23,7 +23,7 @@ export default function RootLayout() {
         }, []);
 
         return (
-            <div className="max-w-7xl mx-auto bg-blue-50">
+            <div className="max-w-7xl mx-auto">
                 <Navbar></Navbar>
                 <Outlet></Outlet>
                 <Footer></Footer>

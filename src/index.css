@@ -9,15 +9,36 @@
   default: true;
   --color-primary: #058538;
   --color-secondary: #851205;
-  --color-accent: #85056b;
+  --color-accent: #2E2E2E;
 }
 
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  color-scheme: "dark";
+  --color-primary: #0298BD;
+  --color-secondary: oklch(65% 0.241 354.308);
+  --color-accent: oklch(77% 0.152 181.912);
+}
 
-a.active{
+/* When theme is dark */
+[data-theme="dark"] a.active {
+  background-color: var(--color-primary); /* Dark theme's primary color */
+  color: #ffffff;
+}
+
+/* When theme is light */
+[data-theme="light"] a.active {
+  background-color: var(--color-primary); /* Light theme's primary color */
+  color: #ffffff;
+}
+
+/* a.active{
   padding: 4px 20px;
   background-color: #058538;
   color: #ffffff;
-}
+} */
+
 
 
 .plus {

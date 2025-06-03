@@ -1,10 +1,37 @@
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import Loading from "../components/Loading";
 import { AiFillLike } from "react-icons/ai";
 import { useState } from "react";
+import ErrorPage from "../components/ErrorPage";
 
 export default function BrowseTipsDetails() {
     const tip = useLoaderData();
+
+    console.log(tip.error);
+
+    if (tip.error) {
+        return (
+            <>
+                
+
+                <div className="h-screen flex flex-col items-center justify-center bg-white px-4 text-center">
+                    <h1 className="text-6xl font-extrabold text-red-600 mb-4">404</h1>
+                    <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">
+                        Your tip could not be found
+                    </h2>
+                    <p className="text-gray-600 mb-6">Please check the URL or go back to the homepage.</p>
+                    <Link
+                        to="/"
+                        
+                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                    >
+                        Go Home
+                    </Link>
+                </div>
+            </>
+        )
+    }
+
 
     const [likeCount, setLikeCount] = useState(tip?.totalLike || 0);
 
@@ -16,7 +43,7 @@ export default function BrowseTipsDetails() {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount) {
-                    
+
                     setLikeCount(prev => prev + 1);
                 } else {
                     console.error("Like failed:", data.message);
@@ -30,7 +57,7 @@ export default function BrowseTipsDetails() {
         <>
 
             <h2 className="text-center text-4xl text-primary font-semibold my-10">Details</h2>
-            <div className="max-w-sm mx-auto my-10 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm mx-auto my-10 bg-white border border-gray-200 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow  dark:bg-gray-800 dark:border-gray-700">
                 <img
                     className="w-full h-52 object-cover"
                     src={tip.imageUrl}

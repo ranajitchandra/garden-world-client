@@ -31,23 +31,29 @@ const categories = [
 export default function WorkWith() {
     return (
         <div className="p-6">
-            <h2 className="text-2xl font-bold my-10 text-center">Work With</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                {categories.map((category, index) => (
-                    <div key={index} className="flex flex-col items-center text-center bg-white p-6 border border-gray-200 cursor-pointer hover:border-gray-400">
-                        <div className="w-20 h-20 mb-2">
-                            <img
-                                src={category.icon}
-                                alt={category.name}
-                                width={80}
-                                height={80}
-                                className="object-contain"
-                            />
-                        </div>
-                        <span className="font-medium text-sm">{category.name}</span>
-                    </div>
-                ))}
-            </div>
+  <h2 className="text-2xl font-bold my-10 text-center text-primary">
+    Work With
+  </h2>
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+    {categories.map((category, index) => (
+      <div
+        key={index}
+        className="flex flex-col items-center text-center bg-white p-6 border border-transparent dark:border-gray-300 hover:border-gray-400 transition-colors cursor-pointer rounded-xl"
+      >
+        <div className="w-20 h-20 mb-2">
+          <img
+            src={category.icon}
+            alt={category.name}
+            width={80}
+            height={80}
+            className="object-contain"
+          />
         </div>
+        <span className="font-medium text-sm text-accent">{category.name}</span>
+      </div>
+    ))}
+  </div>
+</div>
+
     );
 }

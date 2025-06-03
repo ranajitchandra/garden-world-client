@@ -54,7 +54,7 @@ function UpdateTip() {
                         name="userName"
                         defaultValue={userName}
                         readOnly
-                        className="input input-bordered border-primary w-full bg-gray-100"
+                        className="input input-bordered border-primary w-full"
                     />
                 </div>
 
@@ -65,7 +65,7 @@ function UpdateTip() {
                         name="userEmail"
                         defaultValue={userEmail}
                         readOnly
-                        className="input input-bordered border-primary w-full bg-gray-100"
+                        className="input input-bordered border-primary w-full"
                     />
                 </div>
 

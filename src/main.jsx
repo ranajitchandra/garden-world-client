@@ -4,15 +4,25 @@ import './index.css'
 import { ToastContainer } from 'react-toastify'
 import { RouterProvider } from 'react-router'
 import { router } from './route/route'
-import AuthContextProvider from './context/AuthContextProvider'
+import AuthContextProvider, { AuthContext } from './context/AuthContextProvider'
+import { useContext } from 'react'
 
+// Wrapper component to use the context
+function AppWithTheme() {
+    const { theTheme } = useContext(AuthContext)
 
+    return (
+        <div data-theme={theTheme ? "light" : "dark"}>
+            <ToastContainer />
+            <RouterProvider router={router} />
+        </div>
+    )
+}
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         <AuthContextProvider>
-            <ToastContainer />
-            <RouterProvider router={router}></RouterProvider>
+            <AppWithTheme />
         </AuthContextProvider>
     </StrictMode>,
 )

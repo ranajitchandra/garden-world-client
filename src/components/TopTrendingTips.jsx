@@ -12,14 +12,14 @@ const TopTrendingTips = () => {
 
     return (
         <div className="px-4 py-5 max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center my-10">
+            <h2 className="text-3xl font-bold text-center my-10 text-primary">
                 Top Trending Tips
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 {topTips.map((tip, index) => (
                     <div
                         key={index}
-                        className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                        className="bg-base-100 rounded-xl shadow-md border border-transparent dark:border-gray-300 hover:shadow-lg transition-all duration-300 transform hover:scale-105 overflow-hidden"
                     >
                         <div className="h-44 overflow-hidden">
                             <img
@@ -29,18 +29,20 @@ const TopTrendingTips = () => {
                             />
                         </div>
                         <div className="p-4">
-                            <h3 className="text-2xl font-bold text-gray-800 truncate">{tip.title}</h3>
-                            <p className="text-sm text-gray-500 line-clamp-2">{tip.description}</p>
-                            <div className="flex flex-wrap gap-2 mt-3 text-xs text-gray-600">
-                                <span className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-full">
+                            <h3 className="text-2xl font-bold text-secondary truncate">
+                                {tip.title}
+                            </h3>
+                            <p className="text-sm text-accent line-clamp-2">{tip.description}</p>
+                            <div className="flex flex-wrap gap-2 mt-3 text-xs text-accent">
+                                <span className="flex items-center gap-1 bg-base-200 px-2 py-1 rounded-full">
                                     <FaTachometerAlt className="text-yellow-500" /> {tip.difficulty}
                                 </span>
-                                <span className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-full">
+                                <span className="flex items-center gap-1 bg-base-200 px-2 py-1 rounded-full">
                                     <FaTag className="text-blue-500" /> {tip.category}
                                 </span>
                             </div>
                             <div className="mt-3 text-right">
-                                <span className="inline-flex items-center gap-1 text-red-500 font-medium text-sm">
+                                <span className="inline-flex items-center gap-1 text-error font-medium text-sm">
                                     Liked: {tip.totalLike}
                                 </span>
                             </div>
@@ -49,6 +51,7 @@ const TopTrendingTips = () => {
                 ))}
             </div>
         </div>
+
     );
 };
 

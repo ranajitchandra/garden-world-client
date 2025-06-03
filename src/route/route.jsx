@@ -13,6 +13,8 @@ import RootMyTips from "../layouts/RootMyTips";
 import UpdateTip from "../components/UpdateTip";
 import ErrorPage from "../components/ErrorPage";
 import ExploreGardeners from "../pages/ExploreGardeners";
+import PrivateRoute from "../components/PrivateRoute";
+import Loading from "../components/Loading";
 export const router = createBrowserRouter(
     [
         {
@@ -25,12 +27,13 @@ export const router = createBrowserRouter(
                 },
                 {
                     path: "/share_garden_tip",
-                    element: <ShareGardenTip></ShareGardenTip>
+                    element: <PrivateRoute><ShareGardenTip></ShareGardenTip></PrivateRoute>
                 },
                 {
                     path: "/explore_gardeners",
                     loader: () => fetch("https://graden-world-server.vercel.app/exploreGardeners"),
-                    element: <ExploreGardeners></ExploreGardeners>
+                    element: <ExploreGardeners></ExploreGardeners>,
+                    hydrateFallbackElement: <Loading></Loading>
                 },
 
             ]
@@ -42,12 +45,14 @@ export const router = createBrowserRouter(
                 {
                     path: "/my_tips",
                     loader: ()=> fetch("https://graden-world-server.vercel.app/gardenTips"),
-                    element: <MyTips></MyTips>
+                    element: <PrivateRoute><MyTips></MyTips></PrivateRoute>,
+                    hydrateFallbackElement: <Loading></Loading>
                 },
                 {
                     path: '/my_tips/update/:id',
                     loader: ({ params }) => fetch(`https://graden-world-server.vercel.app/gardenTips/${params.id}`),
-                    element: <UpdateTip></UpdateTip>
+                    element: <PrivateRoute><UpdateTip></UpdateTip></PrivateRoute>,
+                    hydrateFallbackElement: <Loading></Loading>
                 },
             ]
         },
@@ -62,7 +67,8 @@ export const router = createBrowserRouter(
                 {
                     path: "/tips/browse_tips_details/:id",
                     loader: ({ params }) => fetch(`https://graden-world-server.vercel.app/gardenTips/${params.id}`),
-                    element: <BrowseTipsDetails></BrowseTipsDetails>
+                    element: <PrivateRoute><BrowseTipsDetails></BrowseTipsDetails></PrivateRoute>,
+                    hydrateFallbackElement: <Loading></Loading>
                 },
 
             ]

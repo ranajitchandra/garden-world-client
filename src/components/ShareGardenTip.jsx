@@ -64,7 +64,7 @@ function ShareGardenTip() {
                         name="userName"
                         defaultValue={user && user.displayName}
                         readOnly
-                        className="input input-bordered border-primary w-full bg-gray-100"
+                        className="input input-bordered border-primary w-full"
                     />
                 </div>
 
@@ -75,7 +75,7 @@ function ShareGardenTip() {
                         name="userEmail"
                         defaultValue={user && user.email}
                         readOnly
-                        className="input input-bordered border-primary w-full bg-gray-100"
+                        className="input input-bordered border-primary w-full"
                     />
                 </div>
 

@@ -118,19 +118,19 @@ export default function Register() {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen">
+        <div className="flex items-center justify-center min-h-screen bg-base-100">
             <form
                 onSubmit={handleSubmit}
                 className="bg-white p-8 rounded-md shadow-2xl w-96"
             >
-                <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+                <h2 className="text-2xl font-bold mb-6 text-center text-primary">Register</h2>
 
                 <div className="mb-4">
-                    <label className="block mb-1 font-medium">Name</label>
+                    <label className="block mb-1 font-medium text-accent">Name</label>
                     <input
                         type="text"
-                        className={`w-full px-3 py-2 border border-primary rounded ${errors.name ? "border-red-500" : "border-gray-300"
-                            }`}
+                        className={`w-full px-3 py-2 rounded border ${errors.name ? "border-red-500" : "border-primary"
+                            } focus:outline-none focus:ring-2 focus:ring-primary transition`}
                         value={name}
                         onChange={handleChange(setName, "name")}
                     />
@@ -140,11 +140,11 @@ export default function Register() {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block mb-1 font-medium">Photo URL</label>
+                    <label className="block mb-1 font-medium text-accent">Photo URL</label>
                     <input
                         type="text"
-                        className={`w-full px-3 py-2 border border-primary rounded ${errors.photo ? "border-red-500" : "border-gray-300"
-                            }`}
+                        className={`w-full px-3 py-2 rounded border ${errors.photo ? "border-red-500" : "border-primary"
+                            } focus:outline-none focus:ring-2 focus:ring-primary transition`}
                         value={photo}
                         onChange={handleChange(setPhoto, "photo")}
                     />
@@ -154,11 +154,11 @@ export default function Register() {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block mb-1 font-medium">Email</label>
+                    <label className="block mb-1 font-medium text-accent">Email</label>
                     <input
                         type="text"
-                        className={`w-full px-3 py-2 border border-primary rounded ${errors.email ? "border-red-500" : "border-gray-300"
-                            }`}
+                        className={`w-full px-3 py-2 rounded border ${errors.email ? "border-red-500" : "border-primary"
+                            } focus:outline-none focus:ring-2 focus:ring-primary transition`}
                         value={email}
                         onChange={handleChange(setEmail, "email")}
                     />
@@ -168,11 +168,11 @@ export default function Register() {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block mb-1 font-medium">Password</label>
+                    <label className="block mb-1 font-medium text-accent">Password</label>
                     <input
                         type="password"
-                        className={`w-full px-3 py-2 border border-primary rounded ${errors.password ? "border-red-500" : "border-gray-300"
-                            }`}
+                        className={`w-full px-3 py-2 rounded border ${errors.password ? "border-red-500" : "border-primary"
+                            } focus:outline-none focus:ring-2 focus:ring-primary transition`}
                         value={password}
                         onChange={handleChange(setPassword, "password")}
                     />
@@ -183,10 +183,11 @@ export default function Register() {
 
                 <button
                     type="submit"
-                    className="w-full bg-primary text-white py-2 rounded hover:bg-cyan-700 transition"
+                    className="w-full bg-primary text-white py-2 rounded hover:bg-secondary transition-colors duration-300"
                 >
                     Create
                 </button>
+
                 <button
                     onClick={handleGoogleLogin}
                     type="button"
@@ -196,5 +197,6 @@ export default function Register() {
                 </button>
             </form>
         </div>
+
     );
 }

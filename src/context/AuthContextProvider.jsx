@@ -10,6 +10,7 @@ export default function AuthContextProvider({ children }) {
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [theTheme, setTheTheme] = useState(true)
     console.log(user)
 
     const googleProvider = new GoogleAuthProvider();
@@ -54,6 +55,8 @@ export default function AuthContextProvider({ children }) {
         setUser,
         loading,
         loginUser,
+        theTheme,
+        setTheTheme,
         createUser,
         logOutUser,
         updateProfileUser,

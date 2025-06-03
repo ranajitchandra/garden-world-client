@@ -92,7 +92,7 @@ export default function Login() {
 
     return (
         <>
-            <div className="flex  items-center justify-evenly">
+            <div className="flex items-center justify-evenly min-h-screen bg-base-100">
                 <div>
                     <Lottie style={{ width: "400px" }} animationData={loginAni}></Lottie>
                 </div>
@@ -101,14 +101,14 @@ export default function Login() {
                         onSubmit={handleLogin}
                         className="bg-white p-8 rounded-md shadow-2xl w-96"
                     >
-                        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+                        <h2 className="text-2xl font-bold mb-6 text-center text-primary">Login</h2>
 
                         <div className="mb-4">
-                            <label className="block mb-1 font-medium">Email</label>
+                            <label className="block mb-1 font-medium text-accent">Email</label>
                             <input
                                 type="text"
-                                className={`w-full px-3 py-2 border border-primary rounded ${errors.email ? "border-red-500" : "border-gray-300"
-                                    }`}
+                                className={`w-full px-3 py-2 rounded border ${errors.email ? "border-red-500" : "border-primary"
+                                    } text-black focus:outline-none focus:ring-2 focus:ring-primary transition`}
                                 value={email}
                                 onChange={handleEmailChange}
                             />
@@ -118,11 +118,11 @@ export default function Login() {
                         </div>
 
                         <div className="mb-4">
-                            <label className="block mb-1 font-medium">Password</label>
+                            <label className="block mb-1 font-medium text-accent">Password</label>
                             <input
                                 type="password"
-                                className={`w-full px-3 py-2 border border-primary rounded ${errors.password ? "border-red-500" : "border-gray-300"
-                                    }`}
+                                className={`w-full px-3 py-2 rounded border ${errors.password ? "border-red-500" : "border-primary"
+                                    } text-black focus:outline-none focus:ring-2 focus:ring-primary transition`}
                                 value={password}
                                 onChange={handlePasswordChange}
                             />
@@ -130,28 +130,32 @@ export default function Login() {
                                 <p className="text-red-500 text-sm mt-1">{errors.password}</p>
                             )}
                         </div>
+
                         <p
                             onClick={() => document.getElementById("my_modal_2").showModal()}
-                            className="mt-4 text-right text-sm text-cyan-800 py-2 font-semibold cursor-pointer"
+                            className="mt-4 text-right text-sm text-secondary font-semibold cursor-pointer hover:underline"
                         >
                             Forgot Password?
                         </p>
+
                         <button
                             type="submit"
-                            className="w-full bg-primary text-white py-2 rounded hover:bg-cyan-700 transition"
+                            className="w-full bg-primary text-white py-2 rounded hover:bg-secondary transition-colors duration-300"
                         >
                             Signin
                         </button>
+
                         <button
                             onClick={handleGoogleLogin}
                             type="button"
-                            className="w-full flex items-center justify-center cursor-pointer mt-4 py-2 border border-primary rounded bg-white hover:bg-gray-100 transition"
+                            className="w-full flex items-center justify-center mt-4 py-2 border border-primary rounded bg-white hover:bg-gray-100 transition"
                         >
                             <FcGoogle className="mr-2" /> Login with Google
                         </button>
                     </form>
                 </div>
             </div>
+
 
 
             <dialog id="my_modal_2" className="modal">

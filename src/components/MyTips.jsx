@@ -79,12 +79,11 @@ export default function MyTips() {
     return (
         <>
             <div className="overflow-x-auto max-w-11/12 mx-auto my-8">
-                <table className="table table-zebra shadow-lg w-full">
+                <table className="table shadow-lg w-full">
                     <thead className="bg-primary text-white text-sm">
                         <tr className="">
                             <th className="py-4 text-left">Image</th>
                             <th className="py-4 text-left">Title</th>
-                            <th className="py-4 text-left">Description</th>
                             <th className="py-4 text-left">Plant Type</th>
                             <th className="py-4 text-left">Difficulty</th>
                             <th className="py-4 text-left">Category</th>
@@ -110,14 +109,13 @@ export default function MyTips() {
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="text-gray-700 font-bold">{tip.title}</td>
-                                    <td className="text-gray-700">{tip.description?.split(" ").slice(0, 5).join(" ")}...</td>
-                                    <td className="text-gray-700">{tip.plantType}</td>
-                                    <td className="text-gray-700">{tip.difficulty}</td>
-                                    <td className="text-gray-700">{tip.category}</td>
-                                    <td className="text-gray-700">{tip.availability}</td>
-                                    <td className="text-gray-700">{tip.userName}</td>
-                                    <td className="text-gray-700">{tip.userEmail}</td>
+                                    <td className="text-accent font-bold">{tip.title}</td>
+                                    <td className="text-accent">{tip.plantType.split(" ").slice(0, 2).join(" ")}</td>
+                                    <td className="text-accent">{tip.difficulty}</td>
+                                    <td className="text-accent">{tip.category}</td>
+                                    <td className="text-accent">{tip.availability}</td>
+                                    <td className="text-accent">{tip.userName}</td>
+                                    <td className="text-accent">{tip.userEmail}</td>
                                     <td className="flex gap-2 justify-end items-center mt-2">
                                         <Link to={`/my_tips/update/${tip._id}`}
                                             className="btn btn-white btn-sm text-white flex items-center gap-2 hover:scale-115 hover:brightness-110 transition-transform"
