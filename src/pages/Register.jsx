@@ -191,11 +191,11 @@ export default function Register() {
                 <button
                     onClick={handleGoogleLogin}
                     type="button"
-                    className="w-full flex cursor-pointer items-center justify-center mt-4 py-2 border border-primary rounded bg-white hover:bg-gray-100 transition"
+                    className="w-full flex cursor-pointer items-center justify-center text-accent mt-4 py-2 border border-primary rounded bg-white hover:bg-gray-100 transition"
                 >
                     <FcGoogle className="mr-2" /> Login with Google
                 </button>
-                <p>Already have an account? <Link to="/auth/login" className="link link-secondary font-bold">Login</Link></p>
+                <p className="text-accent mt-4">Already have an account? <Link to="/auth/login" className="link link-secondary font-bold">Login</Link></p>
             </form>
         </div>
 

@@ -1,14 +1,37 @@
 
-import { useLoaderData, useNavigate } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import Lottie from "lottie-react";
+import errorPageJSON from '../assets/error.json'
 
 
 function UpdateTip() {
 
     const navigate = useNavigate()
 
+    const tip = useLoaderData()
     const { _id, title, plantType, difficulty, description, imageUrl, category, availability, userName, userEmail } = useLoaderData()
-    console.log(_id);
+
+    if (tip.error) {
+        return (
+            <>
+                <div className="h-screen flex flex-col items-center justify-center bg-white px-4 text-center">
+                    <Lottie style={{ width: "300px" }} animationData={errorPageJSON} loop={true} />
+                    <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">
+                        Your tip could not be found
+                    </h2>
+                    <p className="text-gray-600 mb-6">Please check the URL or go back to the homepage.</p>
+                    <Link
+                        to="/"
+
+                        className="px-6 py-2 bg-blue-700 text-white rounded-lg hover:bg-secondary transition"
+                    >
+                        Go Home
+                    </Link>
+                </div>
+            </>
+        )
+    }
 
     const handleUpdateTip = e => {
         e.preventDefault();

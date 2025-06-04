@@ -148,11 +148,11 @@ export default function Login() {
                         <button
                             onClick={handleGoogleLogin}
                             type="button"
-                            className="w-full flex items-center justify-center mt-4 py-2 border border-primary rounded bg-white hover:bg-gray-100 transition"
+                            className="w-full flex items-center justify-center text-accent mt-4 py-2 border border-primary rounded bg-white hover:bg-gray-100 transition"
                         >
                             <FcGoogle className="mr-2" /> Login with Google
                         </button>
-                        <p>Create an account <Link to="/auth/register" className="link link-secondary font-bold">Signup</Link></p>
+                        <p className="text-accent mt-4">Create an account <Link to="/auth/register" className="link link-secondary font-bold">Signup</Link></p>
                     </form>
                 </div>
             </div>

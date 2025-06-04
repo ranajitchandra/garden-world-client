@@ -2,7 +2,9 @@ import { Link, useLoaderData } from "react-router";
 import Loading from "../components/Loading";
 import { AiFillLike } from "react-icons/ai";
 import { useState } from "react";
-import ErrorPage from "../components/ErrorPage";
+import Lottie from "lottie-react";
+import errorPageJSON from '../assets/error.json'
+
 
 export default function BrowseTipsDetails() {
     const tip = useLoaderData();
@@ -12,10 +14,8 @@ export default function BrowseTipsDetails() {
     if (tip.error) {
         return (
             <>
-
-
                 <div className="h-screen flex flex-col items-center justify-center bg-white px-4 text-center">
-                    <h1 className="text-6xl font-extrabold text-red-600 mb-4">404</h1>
+                    <Lottie style={{ width: "300px"}} animationData={errorPageJSON} loop={true} />
                     <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-2">
                         Your tip could not be found
                     </h2>
@@ -23,7 +23,7 @@ export default function BrowseTipsDetails() {
                     <Link
                         to="/"
 
-                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                        className="px-6 py-2 bg-blue-700 text-white rounded-lg hover:bg-secondary transition"
                     >
                         Go Home
                     </Link>
