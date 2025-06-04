@@ -1,8 +1,26 @@
-# 🌿 Graden World Clint
+# 🌿 Garden World Client
 
-Graden World Clint is a modern web application built with **React**, **Vite**, and **Tailwind CSS**. It features elegant UI components, animations, Firebase integration, and various popular libraries for smooth UX/UI development.
+**Garden World Client** is a modern and responsive gardening e-commerce web application built using **React**, **Vite**, and **Tailwind CSS**. It provides a seamless user experience with beautiful UI animations, secure user authentication, and dynamic content management.
 
-## 🚀 Tech Stack
+## 🌐 Live Site
+
+👉 [Live Demo](https://garden-world-react.web.app/)
+
+---
+
+## ✨ Features
+
+- 🔐 **Firebase Authentication** – Secure login and registration system using Google/email sign-in.
+- 🎨 **Responsive UI** – Clean and modern design using Tailwind CSS and DaisyUI for all screen sizes.
+- 🔄 **Dynamic Routing** – Smooth client-side routing with React Router v7.
+- 🎥 **Lottie Animations & AOS** – Engaging animations and scroll-based effects for enhanced user interaction.
+- 📦 **Product Management** – Add, view, update, and delete gardening products with server-side integration.
+- 🔔 **Toast & Alert Notifications** – User-friendly feedback using React Toastify and SweetAlert2.
+- 📁 **Private Routes** – Pages restricted to logged-in users for better security and experience.
+
+---
+
+## 🛠️ Tech Stack
 
 - **React 19**
 - **Vite 6**
@@ -11,24 +29,20 @@ Graden World Clint is a modern web application built with **React**, **Vite**, a
 - **Firebase**
 - **React Router v7**
 - **Lottie Animations**
+- **AOS (Animate On Scroll)**
 - **React Icons**
 - **React Toastify**
-- **AOS (Animate On Scroll)**
 - **SweetAlert2**
 
-## 📦 Installation
+---
 
- Live Demo: https://garden-world-react.web.app/
+## 📦 Installation & Setup
 
+Clone both client and server repositories:
+
+### Client Setup
 ```bash
-# Clone the repository clint
 git clone https://github.com/Programming-Hero-Web-Course4/b11a10-client-side-ranajitchandra
 
-# Clone the repository server
+### Server Setup
 git clone https://github.com/Programming-Hero-Web-Course4/b11a10-server-side-ranajitchandra
-
-# Navigate to the project folder
-cd graden_world_clint
-
-# Install dependencies
-npm install
