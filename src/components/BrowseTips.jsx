@@ -26,7 +26,7 @@ export default function BrowseTips() {
 
 
     return (
-        <div className="overflow-x-auto max-w-8/12 mx-auto my-8">
+        <div className="overflow-x-auto max-w-11/12 lg:max-w-8/12 mx-auto my-8">
 
             <div className="mb-4 text-right">
                 <div className="form-control">
@@ -49,12 +49,12 @@ export default function BrowseTips() {
 
 
             <table className="table table-zebra shadow-lg">
-                <thead className="bg-primary text-white text-lg">
+                <thead className="bg-primary text-white text-sm lg:text-lg">
                     <tr className="grid grid-cols-5 items-center">
                         <th className="py-4">Image</th>
                         <th className="py-4">Title</th>
                         <th className="py-4">Difficulty</th>
-                        <th className="py-4">User Name</th>
+                        <th className="py-4">User</th>
                         <th className="py-4 flex justify-end">Details</th>
                     </tr>
                 </thead>

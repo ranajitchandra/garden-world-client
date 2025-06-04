@@ -35,10 +35,11 @@ export default function Navbar() {
                             </svg>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-                            <li><a className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Home</a></li>
-                            <li><a className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Bills</a></li>
-                            <li><a className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Profile</a></li>
-                            <li><a className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Contact</a></li>
+                            <li><NavLink to="/" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Home</NavLink></li>
+                            <li><NavLink to="/explore_gardeners" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Explore Gardeners</NavLink></li>
+                            <li><NavLink to="/tips" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Browse Tips</NavLink></li>
+                            <li><NavLink to="/share_garden_tip" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">Share a Garden Tip</NavLink></li>
+                            <li><NavLink to="/my_tips" className="hover:bg-primary py-1 px-5 hover:text-white duration-500 rounded-sm">My Tips</NavLink></li>
                         </ul>
                     </div>
                     <div className="flex items-center gap-3">
@@ -58,7 +59,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="navbar-end">
-                    <input onClick={()=> setTheTheme(!theTheme)} type="checkbox" defaultChecked className="toggle toggle-sm mr-5" />
+                    <input onClick={() => setTheTheme(!theTheme)} type="checkbox" defaultChecked className="toggle toggle-sm mr-5" />
                     {user ?
                         <div className="flex gap-2">
                             <div className="dropdown dropdown-end">

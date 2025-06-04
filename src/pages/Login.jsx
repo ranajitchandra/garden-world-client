@@ -152,7 +152,7 @@ export default function Login() {
                         >
                             <FcGoogle className="mr-2" /> Login with Google
                         </button>
-                        <p>Create an account <Link to="/auth/login">Signup</Link></p>
+                        <p>Create an account <Link to="/auth/register" className="link link-secondary font-bold">Signup</Link></p>
                     </form>
                 </div>
             </div>

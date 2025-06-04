@@ -1,4 +1,5 @@
 import { FaTwitter, FaFacebookF, FaMapMarkerAlt, FaInstagram } from 'react-icons/fa';
+import logo from "../assets/logo.png"
 
 const Footer = () => {
     return (
@@ -10,7 +11,7 @@ const Footer = () => {
                     </p>
 
                     <h2 className="text-xl font-bold mb-2 flex items-center gap-2">
-                        <span className="text-2xl">🌿</span> Garden World
+                        <span className="text-2xl"><img className="hidden lg:block w-8 bg-white p-0.5 rounded" src={logo} alt="Logo" /></span> Garden World
                     </h2>
                     <div className="flex space-x-4 mt-4 text-lg">
                         <FaTwitter />
@@ -36,7 +37,7 @@ const Footer = () => {
                     <h3 className="text-lg font-semibold mb-4">Support</h3>
                     <ul className="space-y-2 text-sm">
                         <li>Free a Quote</li>
-                        <li>Send Ticket</li>
+                        <li>Terms and Condition</li>
                         <li>FAQ</li>
                         <li>Contact us</li>
                         <li>Sales Support</li>

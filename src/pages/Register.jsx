@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../context/AuthContextProvider";
@@ -195,6 +195,7 @@ export default function Register() {
                 >
                     <FcGoogle className="mr-2" /> Login with Google
                 </button>
+                <p>Already have an account? <Link to="/auth/login" className="link link-secondary font-bold">Login</Link></p>
             </form>
         </div>
 
