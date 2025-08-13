@@ -44,7 +44,7 @@ export const router = createBrowserRouter(
             children: [
                 {
                     path: "/my_tips",
-                    loader: ()=> fetch("https://graden-world-server.vercel.app/gardenTips"),
+                    loader: () => fetch("https://graden-world-server.vercel.app/gardenTips"),
                     element: <PrivateRoute><MyTips></MyTips></PrivateRoute>,
                     hydrateFallbackElement: <Loading></Loading>
                 },
