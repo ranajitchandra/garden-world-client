@@ -42,7 +42,7 @@ Clone both client and server repositories:
 
 ### Client Setup
 ```bash
-git clone https://github.com/Programming-Hero-Web-Course4/b11a10-client-side-ranajitchandra
+git clone https://github.com/ranajitchandra/garden-world-client.git
 
 ### Server Setup
-git clone https://github.com/Programming-Hero-Web-Course4/b11a10-server-side-ranajitchandra
+git clone https://github.com/ranajitchandra/garden-world-server.git
